@@ -1,4 +1,3 @@
 # Site-jogos
 
-Nosso site de jogos
- Material da disciplina: "Desenvolvimento de Sistemas Computacionais - Turma 4A"
+Nosso site de jogos para a disciplina de "Desenvolvimento de Sistemas Computacionais - Turma 4A"
