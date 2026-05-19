@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Desenvolvimento de Sistemas Computacionais - Exemplo de MVC com Spring Framework e Thymeleaf</title>
+</head>
+
+<body>
+	<h1>Relação de jogos:</h1>
+
+	<tbody>
+		<tr th:if="${games.empty}">
+			<td colspan="2">Sem filmes para exibir</td>
+		</tr>
+		<tr th:each="movie : ${games}">
+			<td><span th:text="${game.title}"> Título </span></td>
+			<td><span th:text="${game.year}"> Ano </span></td>
+			<td><span th:text="${game.genre}"> Genero </span>
+				<img th:src="${game.coverUrl}" alt="Description of the image">
+			
+				<a th:href="@{/game/delete(title=${game.title})}">Delete</a>
+			</td>
+			
+		</tr>
+	</tbody>
+	
+	<form th:action="@{/games/delete}" th:object="${game}" method="get">	
+		    <button>Deletar</button>
+	</form>
+	
+</body>
+
+</html>

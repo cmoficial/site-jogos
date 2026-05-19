@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Desenvolvimento de Sistemas Computacionais - Exemplo de MVC com Spring Framework e Thymeleaf</title>
+	<style>
+		tr {
+			border-bottom: 1px solid #ccc;
+		}
+		td {
+			padding: 12px 16px;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Home</a> |
+		<a href="/games">Cadastrar Jogo</a> |
+		<a href="/games/list">Lista de Jogos</a>
+	</nav>
+	<hr>
+
+	<h1>Relação de jogos:</h1>
+
+	<tbody>
+		<tr th:if="${games.empty}">
+			<td colspan="2">Sem filmes para exibir</td>
+		</tr>
+		<tr th:each="game : ${games}">
+				<a th:href="@{/games/detail(title=${game.title})}">
+					<img th:src="${game.coverUrl}" alt="Description of the image" width="100">
+				</a>			
+			<td><span th:text="${game.title}"> Título </span></td>
+			<td><span th:text="${game.year}"> Ano </span></td>
+			<td><span th:text="${game.genre}"> Genero </span></td>
+			<td>
+
+			</td>
+			<td>
+				<form th:action="@{/games/delete}" method="post" onsubmit="return confirm('Tem certeza que deseja deletar este jogo?');">
+					<input type="hidden" name="title" th:value="${game.title}">
+
+					<button type="submit">Deletar</button>
+				</form>
+
+		<!-- <form th:action="@{/games/delete}" method="get">	
+		    <button>Deletar</button>
+		</form> -->
+			</td>
+		</tr>
+	</tbody>
+	
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Detalhes do Jogo</title>
+	<style>
+		.detail-container {
+			display: flex;
+			gap: 32px;
+			align-items: flex-start;
+			margin-top: 24px;
+		}
+		.detail-info h2 {
+			margin-top: 0;
+		}
+		.detail-info p {
+			font-size: 1.1em;
+			margin: 8px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Home</a> |
+		<a href="/games">Cadastrar Jogo</a> |
+		<a href="/games/list">Lista de Jogos</a>
+	</nav>
+	<hr>
+
+	<h1>Detalhes do Jogo</h1>
+
+	<div class="detail-container">
+		<img th:src="${game.coverUrl}" th:alt="${game.title}" width="200">
+		<div class="detail-info">
+			<h2 th:text="${game.title}">Título</h2>
+			<p><strong>Ano:</strong> <span th:text="${game.year}">Ano</span></p>
+			<p><strong>Gênero:</strong> <span th:text="${game.genre}">Gênero</span></p>
+		</div>
+	</div>
+
+	<br>
+	<a th:href="@{/games/edit(title=${game.title})}">Editar este jogo</a>
+	&nbsp;|&nbsp;
+	<form th:action="@{/games/delete}" method="post" style="display:inline" onsubmit="return confirm('Tem certeza que deseja deletar este jogo?');">
+		<input type="hidden" name="title" th:value="${game.title}">
+		<button type="submit">Deletar este jogo</button>
+	</form>
+	&nbsp;|&nbsp;
+	<a href="/games/list">Voltar à lista</a>
+
+</body>
+
+</html>

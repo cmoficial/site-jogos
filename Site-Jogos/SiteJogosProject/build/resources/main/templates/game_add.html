@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Desenvolvimento de Sistemas Computacionais - Exemplo de MVC com Spring Framework e Thymeleaf</title>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Home</a> |
+		<a href="/games">Cadastrar Jogo</a> |
+		<a href="/games/list">Lista de Jogos</a>
+	</nav>
+	<hr>
+
+	<h1>Cadastro</h1>
+
+	<form th:action="@{/games}" th:object="${game}" method="post">
+		<div>
+			<label th:for="title">Título:</label>
+			<input type="text" th:field="*{title}" placeholder="Título do jogo" required="required">
+		</div>
+
+		<div>
+			<label th:for="year">Ano de lançamento:</label>
+			<input type="text" th:field="*{year}" placeholder="Ano de lançamento" required="required">
+		</div>
+		
+		<div>
+			<label th:for="genre">Genero:</label>
+			<input type="text" th:field="*{genre}" placeholder="Gênero do jogo" required="required">
+		</div>
+			
+		<div>
+			<label th:for="coverUrl">URL:</label>
+			<input type="text" th:field="*{coverUrl}" placeholder="URL do jogo" required="required">
+		</div>
+
+		<div>
+			<button type="submit">Enviar</button>
+		</div>
+	</form>
+</body>
+
+</html>

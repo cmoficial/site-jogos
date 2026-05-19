@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Desenvolvimento de Sistemas Computacionais - Exemplo de MVC com Spring Framework e Thymeleaf</title>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Home</a> |
+		<a href="/games">Cadastrar Jogo</a> |
+		<a href="/games/list">Lista de Jogos</a>
+	</nav>
+	<hr>
+
+	<h1>Dados do filme:</h1>
+
+	<p>Título: <b th:text="${game.title}" /></p>
+	<p>Ano: <b th:text="${game.year}" /></p>
+</body>
+
+</html>

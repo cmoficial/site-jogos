@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar Jogo</title>
+	<style>
+		form label {
+			display: inline-block;
+			width: 120px;
+			font-weight: bold;
+		}
+		form div {
+			margin: 10px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="/">Home</a> |
+		<a href="/games">Cadastrar Jogo</a> |
+		<a href="/games/list">Lista de Jogos</a>
+	</nav>
+	<hr>
+
+	<h1>Editar Jogo</h1>
+
+	<form th:action="@{/games/edit}" method="post">
+		<input type="hidden" name="originalTitle" th:value="${originalTitle}">
+
+		<div>
+			<label for="title">Título:</label>
+			<input type="text" id="title" name="title" th:value="${game.title}" required>
+		</div>
+		<div>
+			<label for="year">Ano:</label>
+			<input type="number" id="year" name="year" th:value="${game.year}" required>
+		</div>
+		<div>
+			<label for="genre">Gênero:</label>
+			<input type="text" id="genre" name="genre" th:value="${game.genre}" required>
+		</div>
+		<div>
+			<label for="coverUrl">URL da Capa:</label>
+			<input type="text" id="coverUrl" name="coverUrl" th:value="${game.coverUrl}" size="60">
+		</div>
+
+		<br>
+		<button type="submit">Salvar alterações</button>
+		&nbsp;
+		<a th:href="@{/games/detail(title=${originalTitle})}">Cancelar</a>
+	</form>
+
+</body>
+
+</html>
